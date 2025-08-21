@@ -2,7 +2,7 @@
 <html lang="pt">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>❤️‍🔥 Os Nossos Sites ❤️‍🔥</title>
   <link rel="stylesheet" type="text/css" href="style.css">
   <style>
@@ -19,11 +19,12 @@
       top: 0;
       left: 0;
       width: 100%;
-      background: rgba(255, 77, 109, 0.9);
+      background: rgba(255, 77, 109, 0.95);
       display: flex;
       justify-content: center;
       z-index: 100;
       padding: 10px 0;
+      flex-wrap: wrap;
     }
 
     .menu ul {
@@ -31,7 +32,9 @@
       margin: 0;
       padding: 0;
       display: flex;
-      gap: 20px;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     .menu li {
@@ -44,6 +47,7 @@
       font-weight: bold;
       padding: 5px 10px;
       display: block;
+      white-space: nowrap;
     }
 
     /* Dropdown */
@@ -52,11 +56,12 @@
       top: 100%;
       left: 0;
       background: rgba(255, 77, 109, 0.95);
-      min-width: 200px;
+      min-width: 150px;
       display: none;
       flex-direction: column;
       border-radius: 8px;
       overflow: hidden;
+      z-index: 200;
     }
 
     .dropdown a {
@@ -69,7 +74,7 @@
 
     /* Estilo seções */
     .container {
-      padding: 80px 20px 40px; /* espaço para menu */
+      padding: 100px 20px 40px; /* espaço para menu fixo */
       max-width: 900px;
       margin: auto;
     }
@@ -96,12 +101,21 @@
       color: #ff4d6d;
     }
 
+    /* Imagem responsiva */
+    .imagem-topo {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: 20px 0;
+      border-radius: 12px;
+    }
+
     /* Botão de som */
     #som-btn {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background-color: pink;
+      background-color: #ff4d6d;
       color: white;
       font-size: 16px;
       border: none;
@@ -112,6 +126,38 @@
       z-index: 100;
     }
 
+    /* ===== Responsivo ===== */
+    @media (max-width: 600px) {
+      .menu ul {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .menu li {
+        width: 100%;
+      }
+
+      .dropdown {
+        position: relative;
+        top: 0;
+        left: 0;
+        min-width: 100%;
+        border-radius: 0;
+      }
+
+      .container {
+        padding: 120px 15px 40px;
+      }
+
+      h1 {
+        font-size: 1.5em;
+      }
+
+      #som-btn {
+        padding: 8px 16px;
+        font-size: 14px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -173,7 +219,6 @@
     <h1>❤️‍🔥 Os Nossos Sites ❤️‍🔥</h1>
     <img src="Imagem WhatsApp 2025-07-27 às 18.20.36_4d30987b.jpg" alt="Imagem romântica" class="imagem-topo">
     <p>Aqui estão todos os nossos momentos digitais juntos 💕</p>
-    <!-- O resto das seções pode continuar igual -->
   </div>
 
   <!-- Áudio -->
@@ -182,7 +227,7 @@
     O teu navegador não suporta áudio.
   </audio>
 
-  <button id="som-btn" onclick="document.getElementById('musica').play()">🎵 Ligar Som</button>
+  <button id="som-btn" onclick="const m=document.getElementById('musica'); m.paused ? m.play() : m.pause();">🎵 Ligar/Pausar Som</button>
 
 </body>
 </html>
